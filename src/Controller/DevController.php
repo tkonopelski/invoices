@@ -56,7 +56,6 @@ class DevController extends AbstractController
     public function save($slug=null, LoggerInterface $logger)
     {
         $out = 'ooo';
-
         $ts = date('dHis');
         $out = $ts;
 
@@ -65,14 +64,7 @@ class DevController extends AbstractController
         $invoice = new Invoice();
         $invoice->setTitle($ts);
 
-        //$issued = \DateTime::createFromFormat('Y-m-d H:i:s', strtotime('now')); # also tried using \DateTimeImmutable
-        $issued = \DateTime::createFromFormat('Y-m-d', strtotime('now')); # also tried using \DateTimeImmutable
-
-
-        //$d = date('Y-m-d');
-        //$issued = new DateTime($d);
-        //$issued->format('H-m-d');
-        //$invoice->setIssued($issued);
+        $issued = \DateTime::createFromFormat('Y-m-d', strtotime('now'));
 
         $invoice->setNumber('FW-' . date('Y-m-d H:m:s'));
 
@@ -80,17 +72,9 @@ class DevController extends AbstractController
 
         $entityManager->flush();
 
-        //$entityManager->getRepository(Invoice::class)->findAll();
-        //$entityManager->getRepository(Invoice::class)->findOneBy('id' => 1);
-
         $logger->info('SSSS');
         return new Response(
             '<html><body><pre>'.$out.'</pre></body></html>'
         );
     }
-
-
-
-
-
 }

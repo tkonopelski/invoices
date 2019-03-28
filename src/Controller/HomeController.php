@@ -6,26 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-
-
     /**
-     * HOME test
+     * HOME
+     *
      */
     public function index()
     {
         $number = random_int(0, 100);
         $url = $this->generateUrl(
             'devtwig',
-            ['slug' => 'my-blog-post']
-        );
-
-        $this->addFlash(
-            'danger',
-            'Your changes were saved!'
+            ['slug' => 'test1']
         );
 
         return $this->render('home/home.html.twig', [
-            'title' => 'Home',
+            'title' => 'Home1',
             'number' => $number,
             'url' => $url,
 
@@ -34,14 +28,9 @@ class HomeController extends AbstractController
 
     public function login()
     {
-        // Invoices
-
         return $this->render('home/login.html.twig', [
             'title' => 'Login',
         ]);
-
     }
-
-
 
 }

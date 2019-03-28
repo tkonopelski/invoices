@@ -33,7 +33,6 @@ class InvoiceRepository extends ServiceEntityRepository
     }
 
 
-
     // TODO!
     public function findOneByUser($user): ?Invoice
     {
@@ -45,9 +44,4 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
-
-
-
-
-
 }

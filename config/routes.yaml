@@ -1,0 +1,38 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+
+devtest:
+    path: /dev/test
+    controller: App\Controller\DevController::test
+
+devtwig:
+    path: /dev/twig
+    controller: App\Controller\DevController::twig
+
+devshow:
+    path: /dev/show/{slug}
+    controller: App\Controller\DevController::show
+devsave:
+    path: /dev/save/{slug}
+    controller: App\Controller\DevController::save
+
+invoicelisthome:
+    path: /invoice/list
+    controller: App\Controller\InvoicesController:list
+invoicelist:
+    path: /invoice/list/{slug}
+    controller: App\Controller\InvoicesController:list
+
+invoiceshow:
+    path: /invoice/show/id/{id}
+    controller: App\Controller\InvoicesController:showId
