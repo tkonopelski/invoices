@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoices{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <h3>Invoices</h3>
+
+
+            <table class="table table-striped">
+                <thead class="d-none">
+                <tr >
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    {% for invoice in list %}
+                <tr>
+
+                        <td scope="row">{{ invoice.id }}</td>
+                        <td>
+                            <a href="/invoice/show/id/{{ invoice.id }}">
+                            {{ invoice.number }}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            {{ invoice.title }}
+
+                        </td>
+                        <td>
+                            {{ invoice.added|date("Y-m-d") }}
+
+                        </td>
+
+                        <td>
+                            <a class="btn btn-danger" href="{{ path('invoices_edit', {'invoiceId': invoice.id}) }}">Edit</a>
+                        </td>
+
+                </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

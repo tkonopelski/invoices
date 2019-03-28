@@ -19,6 +19,11 @@ class HomeController extends AbstractController
             ['slug' => 'my-blog-post']
         );
 
+        $this->addFlash(
+            'danger',
+            'Your changes were saved!'
+        );
+
         return $this->render('home/home.html.twig', [
             'title' => 'Home',
             'number' => $number,
@@ -29,7 +34,7 @@ class HomeController extends AbstractController
 
     public function login()
     {
-
+        // Invoices
 
         return $this->render('home/login.html.twig', [
             'title' => 'Login',

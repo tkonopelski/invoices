@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EDIT{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>Edit</h1>
+
+            {{ form_start(invoicesEdit) }}
+
+            {{ form_row(invoicesEdit.number) }}
+
+
+            <button class="btn">Save</button>
+            {{ form_end(invoicesEdit) }}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
