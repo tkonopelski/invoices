@@ -34,11 +34,14 @@ class InvoiceRepository extends ServiceEntityRepository
 
 
     // TODO!
-    public function findOneByUser($user): ?Invoice
+    public function findOneByUserById($invoiceId, $user): ?Invoice
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.client= :client')
             ->setParameter('client', $user)
+
+            ->andWhere('i.id= :id')
+            ->setParameter('id', $invoiceId)
 
             ->getQuery()
             ->getOneOrNullResult()

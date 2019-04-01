@@ -1,0 +1,51 @@
+
+
+{#
+
+{% extends 'base.html.twig' %}
+
+{% block title %}EDIT{% endblock %}
+
+{% block body %}
+#}
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row" id="invoice_item_form_div">
+        <div class="col-md-12">
+
+            {#
+            {{ dump(invoiceItemEdit) }}
+            #}
+
+            {{ form_start(invoiceItemEdit) }}
+
+            <div class="form-group">
+            {{ form_row(invoiceItemEdit.item_name, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+            {{ form_row(invoiceItemEdit.quantity, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+            {{ form_row(invoiceItemEdit.price, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+
+
+            <button class="btn btn-primary">Save</button>
+
+            <button type="button" data-id="{{ invoiceItemId }}" id="invoice_item_form_submit" class="btn btn-primary">Save 2</button>
+
+            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+
+            {{ form_end(invoiceItemEdit) }}
+
+        </div>
+    </div>
+</div>
+
+{#
+
+{% endblock %}
+
+#}

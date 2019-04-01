@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Invoices{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 
@@ -12,6 +12,7 @@
             <h1>ITEM</h1>
 
             {{ dump(item) }}
+            {{ dump(invoiceItems) }}
 
         </div>
     </div>

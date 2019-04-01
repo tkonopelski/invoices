@@ -55,13 +55,17 @@ class InvoiceItemRepository extends ServiceEntityRepository
     public function findByInvoice($invoiceId)
     {
 
-        return $this->createQueryBuilder('item')
+        $db = $this->createQueryBuilder('item')
             ->andWhere('item.invoice_id = :invoice_id')
-            ->setParameter('invoice_id', $invoiceId)
-            ->orderBy('item.id', 'DESC')
+            ->setParameter('invoice_id', $invoiceId);
+
+            $db->orderBy('item.id', 'DESC')
             ->setMaxResults(1000)
-            ->getQuery()
-            ->getResult()
+
         ;
+
+        return $db->getQuery()->execute();
+
+
     }
 }
