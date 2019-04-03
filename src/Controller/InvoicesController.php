@@ -58,8 +58,6 @@ class InvoicesController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $item = $entityManager->getRepository(Invoice::class)->findOneByUserById($id, $this->getUser()->getId());
 
-
-
         if (empty($item)) {
             throw $this->createNotFoundException('Invoice does not exist');
         }
@@ -69,7 +67,6 @@ class InvoicesController extends AbstractController
         dump($item);
         dump($invoiceItems);
 
-        //invoices/invoices_item.html.twig
         return $this->render('invoices/invoices_show.html.twig', [
             'title' => 'Item #' . $item->getId(),
             'item' => $item,
@@ -101,6 +98,8 @@ class InvoicesController extends AbstractController
      */
     public function edit(Request $request, $invoiceId=null): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
 
         $invoiceItems = array();
@@ -117,7 +116,6 @@ class InvoicesController extends AbstractController
 
         $form = $this->createForm(InvoiceFormType::class, $invoice);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -157,8 +155,6 @@ class InvoicesController extends AbstractController
 
         dump($invoiceItem);
 
-
-        //$form = $this->createForm(InvoiceFormType::class, $invoiceItem);
         $form = $this->createForm(InvoiceItemFormType::class,
             $invoiceItem, ['attr' => ['id' => 'invoice_item_form_id']]);
         $form->handleRequest($request);
@@ -176,9 +172,6 @@ class InvoicesController extends AbstractController
             );
 
             //return $this->redirect('/invoice/show/id/'. $invoiceItem->getInvoiceId());
-
-            
-
         }
 
         return $this->render('invoices/invoice_item_edit.html.twig', [
